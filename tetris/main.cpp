@@ -1,4 +1,3 @@
-#include "SDL.h"
 #include "Game.hpp"
 
 Game *game = nullptr;

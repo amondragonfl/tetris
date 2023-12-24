@@ -1,5 +1,6 @@
 #include "Game.hpp"
 #include <iostream>
+#include "TextureManager.hpp"
 
 Game::Game()
 {}
