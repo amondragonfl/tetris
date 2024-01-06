@@ -9,14 +9,15 @@ Block::Block(const char* texturePath, int sizePX)
 	ypos = 0;
 	row = 0;
 	col = 0;
-	destRect.w = sizePX;
-	destRect.h = sizePX;
+	pxSize = sizePX;
 }
 
 void Block::update()
 {
 	destRect.x = xpos;
 	destRect.y = ypos;
+	destRect.w = pxSize;
+	destRect.h = pxSize;
 }
 
 void Block::render()

@@ -14,11 +14,13 @@ public:
 	inline void setCol(int c) { col = c;  }
 	inline int getRow() const { return row; }
 	inline int getCol() const { return col; }
+	inline void setPxSize(int px) { pxSize = px; }
 	
 private:
 	SDL_Texture* texture; 
 	SDL_Rect destRect;
 	int xpos, ypos;
+	int pxSize;
 	int row, col; 
 
 };
