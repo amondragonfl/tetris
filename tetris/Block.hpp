@@ -4,7 +4,7 @@
 class Block 
 {
 public:
-	Block(const char* texturePath, SDL_Renderer* ren, int sizePX);
+	Block(const char* texturePath, int sizePX);
 	~Block();
 	void update();
 	void render();
@@ -16,7 +16,6 @@ public:
 	inline int getCol() const { return col; }
 	
 private:
-	SDL_Renderer* renderer; 
 	SDL_Texture* texture; 
 	SDL_Rect destRect;
 	int xpos, ypos;

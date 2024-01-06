@@ -1,6 +1,9 @@
 #include "Game.hpp"
 #include <iostream>
 #include "TextureManager.hpp"
+#include "Block.hpp"
+
+SDL_Renderer* Game::renderer = nullptr;
 
 Game::Game()
 {}
@@ -25,10 +28,10 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 		{
 			std::cout << "Window initialized succesfully" << std::endl;
 		}
-		renderer = SDL_CreateRenderer(window, -1, 0);
-		if (renderer)
+		Game::renderer = SDL_CreateRenderer(window, -1, 0);
+		if (Game::renderer)
 		{
-			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+			SDL_SetRenderDrawColor(Game::renderer, 0, 0, 0, 255);
 			std::cout << "Renderer initialized succesfully" << std::endl;
 		}
 
@@ -39,6 +42,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 }
+
 
 void Game::handleEvents()
 {
@@ -59,15 +63,15 @@ void Game::update()
 
 void Game::render()
 {
-	SDL_RenderClear(renderer);
+	SDL_RenderClear(Game::renderer);
 	// Render stuff 
-	SDL_RenderPresent(renderer);
+	SDL_RenderPresent(Game::renderer);
 }
 
 void Game::clean()
 {
 	SDL_DestroyWindow(window);
-	SDL_DestroyRenderer(renderer);
+	SDL_DestroyRenderer(Game::renderer);
 	SDL_Quit();
 	std::cout << "game cleaned" << std::endl;
 }

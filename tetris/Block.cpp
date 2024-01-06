@@ -2,10 +2,9 @@
 #include "Block.hpp"
 #include "TextureManager.hpp"
 
-Block::Block(const char* texturePath, SDL_Renderer* ren, int sizePX)
+Block::Block(const char* texturePath, int sizePX)
 {
-	renderer = ren;
-	texture = TextureManager::LoadTexture(texturePath, renderer);
+	texture = TextureManager::LoadTexture(texturePath);
 	xpos = 0;
 	ypos = 0;
 	row = 0;
@@ -22,5 +21,5 @@ void Block::update()
 
 void Block::render()
 {
-	SDL_RenderCopy(renderer, texture, NULL, &destRect);
+	SDL_RenderCopy(Game::renderer, texture, NULL, &destRect);
 }
