@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 	int frameTime; 
 
 	game = new Game();
-	game->init("Tetris", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 250, 425, false);
+	game->init("Tetris", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, NUM_COLS*BLOCK_PX_SIZE, NUM_ROWS * BLOCK_PX_SIZE, false);
 
 	while (game->running())
 	{

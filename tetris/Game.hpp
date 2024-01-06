@@ -2,6 +2,10 @@
 #include "SDL.h"
 #include "SDL_image.h"
 
+constexpr int NUM_ROWS = 17;
+constexpr int NUM_COLS = 10; 
+constexpr int BLOCK_PX_SIZE = 25;
+
 class Game
 {
 public:
@@ -20,4 +24,3 @@ private:
 	bool isRunning;
 
 };
-
