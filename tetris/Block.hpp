@@ -8,13 +8,13 @@ public:
 	~Block();
 	void update();
 	void render();
-	inline void setX(int x) { xpos = x; }
-	inline void setY(int y) { ypos = y; }
-	inline void setRow(int r) { row = r; }
-	inline void setCol(int c) { col = c;  }
-	inline int getRow() const { return row; }
-	inline int getCol() const { return col; }
-	inline void setPxSize(int px) { pxSize = px; }
+	void setX(int x) { xpos = x; }
+	void setY(int y) { ypos = y; }
+	void setRow(int r) { row = r; }
+	void setCol(int c) { col = c;  }
+	int getRow() const { return row; }
+	int getCol() const { return col; }
+	void setPxSize(int px) { pxSize = px; }
 	
 private:
 	SDL_Texture* texture; 
