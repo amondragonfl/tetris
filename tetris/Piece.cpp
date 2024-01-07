@@ -1,7 +1,10 @@
 #include "Piece.hpp"
+#include <algorithm> 
+#include <iterator>
 
-Piece::Piece(int type, Board* board)
+Piece::Piece(int type, Board* brd)
 {
+	board = brd;
 	for (int i = 0; i < 4; i++)
 	{
 		blockArr[i] = new Block("assets/sprites/blueblock25px.png", BLOCK_PX_SIZE);
@@ -46,5 +49,28 @@ Piece::Piece(int type, Board* board)
 			board->addBlock(blockArr[i], pattern[type][i][0], pattern[type][i][1]);
 		}
 	}
+}
 
+void Piece::dropPiece()
+{
+	bool canDrop = true;
+	Block* blockBelow;
+	for (int i = 0; i < 4; i++) // check if all blocks of piece can drop 
+	{
+		blockBelow = board->getBlock(blockArr[i]->getRow() + 1, blockArr[i]->getCol());
+		if (blockBelow != nullptr)
+		{
+			auto iter = std::find(std::begin(blockArr), std::end(blockArr), blockBelow);
+			if (iter == std::end(blockArr)) {
+				canDrop = false; // block below doesn't belong to piece so piece can't drop 
+			}
+		}
+	}
+	if (canDrop) 
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			board->moveBlock(blockArr[i], blockArr[i]->getRow() + 1, blockArr[i]->getCol());
+		}
+	}
 }

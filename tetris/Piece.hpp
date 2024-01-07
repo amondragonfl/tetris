@@ -7,13 +7,16 @@ class Piece
 {
 
 public:
-	Piece(int type, Board* board);
+	Piece(int type, Board* brd);
 	~Piece();
 	bool isEnoughSpace() { return enoughSpace; }
+	void dropPiece();
+
 
 
 private:
 	Block* blockArr[4];
+	Board* board; 
 	bool enoughSpace; 
 
 };
