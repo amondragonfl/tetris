@@ -9,6 +9,7 @@ public:
 	~Board();
 	void render();
 	void addBlock(Block* blockptr, int r, int c);
+	void moveBlock(Block* blockptr, int nr, int nc);
 	Block* getBlock(int r, int c);
 
 private:

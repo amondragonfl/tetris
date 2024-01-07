@@ -59,3 +59,12 @@ Block* Board::getBlock(int r, int c)
 	}
 	return nullptr;
 }
+
+void Board::moveBlock(Block* blockptr, int nr, int nc)
+{
+	if (boardArr[blockptr->getRow()][blockptr->getCol()] == blockptr)
+	{
+		boardArr[blockptr->getRow()][blockptr->getCol()] = nullptr;
+		addBlock(blockptr, nr, nc);
+	}
+}
