@@ -9,6 +9,7 @@ public:
 	~Board();
 	void render();
 	void addBlock(Block* blockptr, int r, int c);
+	Block* getBlock(int r, int c);
 
 private:
 	SDL_Rect renderingRect; 

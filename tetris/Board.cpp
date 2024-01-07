@@ -45,6 +45,17 @@ void Board::addBlock(Block* blockptr, int r, int c)
 {
 	if (r < NUM_ROWS && c < NUM_COLS)
 	{
+		blockptr->setRow(r);
+		blockptr->setCol(c);
 		boardArr[r][c] = blockptr;
 	}
+}
+
+Block* Board::getBlock(int r, int c)
+{
+	if (r < NUM_ROWS && c < NUM_COLS)
+	{
+		return boardArr[r][c];
+	}
+	return nullptr;
 }
