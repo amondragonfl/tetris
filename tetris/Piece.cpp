@@ -30,8 +30,21 @@ Piece::Piece(int type, Board* board)
 		{{0, xShift}, {0, xShift + 1}, {0, xShift + 2}, {0, xShift + 3}}, // ....
 	};
 	
+	enoughSpace = true;
 	for (int i = 0; i < 4; i++)
 	{
-		board->addBlock(blockArr[i], pattern[type][i][0], pattern[type][i][1]);
+		if (board->getBlock(pattern[type][i][0], pattern[type][i][1]) != nullptr)
+		{
+			enoughSpace = false;
+			break;
+		}
 	}
+	if (enoughSpace) 
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			board->addBlock(blockArr[i], pattern[type][i][0], pattern[type][i][1]);
+		}
+	}
+
 }
