@@ -60,11 +60,12 @@ Block* Board::getBlock(int r, int c)
 	return nullptr;
 }
 
-void Board::moveBlock(Block* blockptr, int nr, int nc)
+// if the passed block argument is not in board it will add it instead of "moving" it
+void Board::moveBlock(Block* blockptr, int nr, int nc) 
 {
-	if (boardArr[blockptr->getRow()][blockptr->getCol()] == blockptr)
+	if (boardArr[blockptr->getRow()][blockptr->getCol()] == blockptr) 
 	{
-		boardArr[blockptr->getRow()][blockptr->getCol()] = nullptr;
-		addBlock(blockptr, nr, nc);
+		boardArr[blockptr->getRow()][blockptr->getCol()] = nullptr; 
 	}
+	addBlock(blockptr, nr, nc);
 }
