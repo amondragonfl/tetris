@@ -11,6 +11,7 @@ public:
 	~Piece();
 	bool isEnoughSpace() { return enoughSpace; }
 	bool moveDown(); //True if it could drop the piece
+	void update();
 
 
 

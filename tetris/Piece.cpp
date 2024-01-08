@@ -2,6 +2,8 @@
 #include <algorithm> 
 #include <iterator>
 
+Uint32 startTime = SDL_GetTicks();
+
 Piece::Piece(int type, Board* brd)
 {
 	board = brd;
@@ -74,4 +76,14 @@ bool Piece::moveDown()
 	}
 	
 	return true;
+}
+
+void Piece::update()
+{
+	Uint32 elapsedTime = SDL_GetTicks() - startTime;
+	if (elapsedTime > 1000)
+	{
+		moveDown();
+		startTime = SDL_GetTicks();
+	}
 }
