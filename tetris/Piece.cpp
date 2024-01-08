@@ -51,26 +51,27 @@ Piece::Piece(int type, Board* brd)
 	}
 }
 
-void Piece::dropPiece()
+bool Piece::moveDown()
 {
-	bool canDrop = true;
 	Block* blockBelow;
+
 	for (int i = 0; i < 4; i++) // check if all blocks of piece can drop 
 	{
+		if ((blockArr[i]->getRow() + 1) > NUM_ROWS - 1) { return false; }
 		blockBelow = board->getBlock(blockArr[i]->getRow() + 1, blockArr[i]->getCol());
 		if (blockBelow != nullptr)
 		{
 			auto iter = std::find(std::begin(blockArr), std::end(blockArr), blockBelow);
 			if (iter == std::end(blockArr)) {
-				canDrop = false; // block below doesn't belong to piece so piece can't drop 
+				return false;
 			}
 		}
 	}
-	if (canDrop) 
+
+	for (int i = 0; i < 4; i++) 
 	{
-		for (int i = 0; i < 4; i++)
-		{
-			board->moveBlock(blockArr[i], blockArr[i]->getRow() + 1, blockArr[i]->getCol());
-		}
+		board->moveBlock(blockArr[i], blockArr[i]->getRow() + 1, blockArr[i]->getCol());
 	}
+	
+	return true;
 }

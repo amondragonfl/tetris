@@ -10,7 +10,7 @@ public:
 	Piece(int type, Board* brd);
 	~Piece();
 	bool isEnoughSpace() { return enoughSpace; }
-	void dropPiece();
+	bool moveDown(); //True if it could drop the piece
 
 
 
