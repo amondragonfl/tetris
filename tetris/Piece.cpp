@@ -1,11 +1,14 @@
 #include "Piece.hpp"
 #include <algorithm> 
 #include <iterator>
+#include<iostream>
 
-Uint32 startTime = SDL_GetTicks();
+Uint32 moveDownStart;
 
 Piece::Piece(int type, Board* brd)
 {
+	isSettled = false;
+	moveDownStart = SDL_GetTicks();
 	board = brd;
 	for (int i = 0; i < 4; i++)
 	{
@@ -78,12 +81,31 @@ bool Piece::moveDown()
 	return true;
 }
 
+int count = 0;
 void Piece::update()
 {
-	Uint32 elapsedTime = SDL_GetTicks() - startTime;
-	if (elapsedTime > 1000)
+	if (not isPieceSettled())
 	{
-		moveDown();
-		startTime = SDL_GetTicks();
+		Uint32 moveDownElapsed = SDL_GetTicks() - moveDownStart;
+		if (moveDownElapsed > 1000)
+		{
+			if (not isPieceSettled())
+			{
+				if (!moveDown())
+				{
+					count++;
+				}
+				else { count = 0; }
+			}
+			if (count >= 1)
+			{
+				isSettled = true;
+			}
+			moveDownStart = SDL_GetTicks();
+		}
+	}
+	else
+	{
+		std::cout << "settled piece" << std::endl;
 	}
 }
